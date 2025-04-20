@@ -118,6 +118,39 @@ header {
     }
 }
 
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column; /* Cho aside xếp dọc trên mobile */
+        gap: 15px;
+    }
+
+    .thanh-ben {
+        width: 100%;             /* Cho aside chiếm toàn bộ ngang */
+        padding: 10px;
+        font-size: 14px;         /* Chữ nhỏ hơn chút */
+        box-shadow: none;        /* Bỏ đổ bóng cho gọn */
+    }
+
+    .thanh-ben h2 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .submenu_bentrai li a {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .san-pham {
+        width: 100%;
+    }
+
+    .danh-sach-san-pham {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Sản phẩm nhỏ gọn hơn */
+        padding: 10px;
+    }
+}
+
 /* Thanh Menu */
 nav {
     list-style: none;
