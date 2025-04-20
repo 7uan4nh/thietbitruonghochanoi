@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giáo dục thể chất</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -80,5 +93,84 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+      const sanPhamData = {
+        sp01: { ten: "Cầu môn", moTa: "Cầu môn - một loại dụng cụ thể thao dùng trong các trò chơi bóng.", hinh: "img/Cau mon.png" },
+    sp02: { ten: "Cột và lưới bóng chuyền hơi", moTa: "Cột và lưới bóng chuyền hơi dùng cho môn thể thao này.", hinh: "img/Cot va luoi bong chuyen hoi.png" },
+    sp03: { ten: "Cột và lưới đá cầu", moTa: "Cột và lưới dùng cho môn đá cầu, thiết bị thể thao phổ biến.", hinh: "img/Cot va luoi da cau.png" },
+    sp04: { ten: "Cột bóng rổ", moTa: "Cột bóng rổ dành cho môn thể thao bóng rổ, thiết kế chắc chắn.", hinh: "img/Tru bong ro.png" },
+    sp05: { ten: "Bóng rổ", moTa: "Bóng rổ, dụng cụ chính để chơi môn thể thao bóng rổ.", hinh: "img/Bong ro.png" },
+    sp06: { ten: "Đồng hồ bấm giây", moTa: "Đồng hồ dùng để đo thời gian trong các môn thể thao, sự kiện.", hinh: "img/Dong ho bam giay.png" },
+    sp07: { ten: "Quả cầu đá", moTa: "Quả cầu đá được sử dụng trong nhiều trò chơi thể thao và luyện tập.", hinh: "img/Qua cau da.png" },
+    sp08: { ten: "Thước dây", moTa: "Thước dây được sử dụng để đo khoảng cách trong thể thao và xây dựng.", hinh: "img/Thuoc day.png" },
+    sp09: { ten: "Đệm nhảy", moTa: "Đệm nhảy dùng trong các bài tập thể dục hoặc thể thao có tác động mạnh.", hinh: "img/Dem nhay.png" },
+    sp10: { ten: "Dây nhảy tập thể", moTa: "Dây nhảy tập thể dùng cho các bài tập nhảy tập thể.", hinh: "img/Day nhay tap the.png" },
+    sp11: { ten: "Dây nhảy cá nhân", moTa: "Dây nhảy cá nhân cho các bài tập thể dục nhịp điệu.", hinh: "img/Day nhay ca nhan.png" },
+    sp12: { ten: "Cột đa năng", moTa: "Cột đa năng có thể sử dụng cho nhiều môn thể thao khác nhau.", hinh: "img/Cot da nang.png" },
+    sp13: { ten: "Còi nhựa", moTa: "Còi nhựa được sử dụng trong thể thao, chỉ huy hoặc trong các hoạt động tổ chức.", hinh: "img/Coi nhua.png" },
+    sp14: { ten: "Cờ đuôi nheo", moTa: "Cờ đuôi nheo thường dùng trong các cuộc thi thể thao hoặc sự kiện.", hinh: "img/Co duoi nheo.png" },
+    sp15: { ten: "Bộ tranh về bài thế dục", moTa: "Bộ tranh hướng dẫn các bài thế dục cơ bản cho học sinh.", hinh: "img/Tranh ve bai the duc.png" },
+    sp16: { ten: "Bộ tranh về các tư thế vận động cơ bản", moTa: "Bộ tranh mô phỏng các tư thế vận động cơ bản cho học sinh.", hinh: "img/Tranh van dong co ban.png" },
+    sp17: { ten: "Bộ tranh về đội hình đội ngũ", moTa: "Bộ tranh mô phỏng các đội hình đội ngũ trong các hoạt động tập thể.", hinh: "img/Tranh doi hinh doi ngu.png" }
+        }
+        function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

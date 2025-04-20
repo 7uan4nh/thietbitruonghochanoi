@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn tự nhiên xã hội</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -32,5 +45,72 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+            sp01: { ten: "Bộ tranh: Cơ thể người và các giác quan", moTa: "Giúp học sinh nhận diện các bộ phận trên cơ thể người và các giác quan của cơ thể.", hinh: "img/Bo tranh co the va cac giac quan.png" },
+            sp02:{ ten: "Bộ tranh: Những việc cần làm để giữ vệ sinh cá nhân", moTa: "Hướng dẫn các thói quen tốt để giữ gìn vệ sinh cơ thể và bảo vệ sức khỏe.", hinh: "img/Bo tranh nhung viec can lam de giu ve sinh ca nhan.png" },
+            sp03:{ ten: "Bộ tranh: Những việc nên và không nên làm khi học đường", moTa: "Minh họa những hành vi phù hợp và không phù hợp trong môi trường học đường.", hinh: "img/Bo tranh phong tranh can thi hoc duong.png" },
+            sp04:{ ten: "Bộ tranh: Phòng tránh bị xâm hại L1 - TT05/2019", moTa: "Cung cấp các kiến thức và hình ảnh để phòng tránh tình trạng xâm hại và bảo vệ bản thân.", hinh: "img/Bo tranh phong tranh xam hai.png" },
+            sp05:{ ten: "Bộ sa bàn giao thông (L1 - TT05/2019)", moTa: "Mô hình sa bàn giao thông giúp học sinh hiểu về các quy tắc giao thông và an toàn khi tham gia giao thông.", hinh: "img/Sabangiaothong.png" }
+        }
+        function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

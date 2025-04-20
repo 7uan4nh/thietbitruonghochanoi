@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn đạo đức - HĐ trải nghiệm</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -52,5 +65,78 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+            sp01: { ten: "Bộ tranh: Tự giác làm việc của mình L1-T...", moTa: "Giúp học sinh hình thành thói quen tự giác làm việc và chịu trách nhiệm.", hinh: "img/Bo tranh tÆ° giac lam viec cua minh.png" },
+            sp02:{ ten: "Bộ tranh: Thực hiện nội quy trường lớp L...", moTa: "Giúp học sinh hiểu và thực hiện tốt nội quy trong trường lớp.", hinh: "img/Bo tranh thuc hien noi quy truong lop.png" },
+            sp03:{ ten: "Bộ tranh: Yêu gia đình (L1- TT05/2019)", moTa: "Khuyến khích học sinh yêu thương và kính trọng gia đình.", hinh: "img/Bo tranh yeu gia dinh.png" },
+            sp04:{ ten: "Bộ tranh: Phòng tránh tai nạn thương tích...", moTa: "Hướng dẫn học sinh các biện pháp phòng tránh tai nạn và bảo vệ bản thân.", hinh: "img/Tranh phong tranh tai nan thuong tich.png" },
+            sp05:{ ten: "Bộ tranh: Thật thà", moTa: "Khuyến khích học sinh rèn luyện phẩm chất thật thà, trung thực.", hinh: "img/Tranh that tha.png" },
+            sp06:{ ten: "Bộ tranh: Nghiêm trang khi chào cờ L1- T...", moTa: "Dạy học sinh về tầm quan trọng của lễ chào cờ và thái độ nghiêm trang.", hinh: "img/Bo tranh nghiem trang khi chao co.png" },
+            sp07:{ ten: "Bộ tranh: Sinh hoạt nề nếp L1- TT05/2019...", moTa: "Giúp học sinh hiểu và thực hiện các quy tắc sinh hoạt nề nếp trong lớp học.", hinh: "img/Bo tranh sinh hoat ne nep.png" },
+            sp08:{ ten: "Bộ tranh: Tự chăm sóc bản thân L1- TT05/...", moTa: "Giúp học sinh tự chăm sóc sức khỏe và duy trì thói quen lành mạnh.", hinh: "img/bo tranh tu cham soc ban than.png" },
+            sp09:{ ten: "Bộ tranh: Các gương mặt cảm xúc cơ bản -...", moTa: "Hướng dẫn học sinh nhận diện và hiểu các cảm xúc cơ bản của con người.", hinh: "img/Bo tranh cÃ¡c guong mat cam xuc co ban - HS.png" },
+            sp10:{ ten: "Bộ tranh: Các gương mặt cảm xúc cơ bản -...", moTa: "Giúp học sinh hiểu và nhận biết các cảm xúc qua hình ảnh gương mặt.", hinh: "img/Bo tranh cÃ¡c guong mat cam xuc co ban - HS.png" }
+        }
+
+        function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>
