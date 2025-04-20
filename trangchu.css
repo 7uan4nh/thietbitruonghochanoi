@@ -42,6 +42,81 @@ header {
     
 }
 
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Chuyển menu sang dạng dọc */
+        width: 100%; /* Đảm bảo menu chiếm toàn bộ chiều rộng */
+    }
+    nav ul li {
+        margin: 10px 0; /* Khoảng cách giữa các mục trong menu */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        height: auto;
+        max-height: 150px; /* Giới hạn chiều cao logo */
+    }
+    .logo img {
+        width: 100%;
+        height: auto; /* Đảm bảo tỷ lệ logo không bị méo */
+    }
+}
+
+@media (max-width: 768px) {
+    .thanh-ben {
+        width: 100%; /* Đảm bảo thanh bên chiếm hết chiều rộng màn hình */
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .danh-sach-san-pham {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 1-2 cột trên màn hình nhỏ */
+        gap: 15px;
+    }
+
+    .san-pham-item {
+        min-height: 250px; /* Giảm chiều cao của sản phẩm */
+    }
+}
+
+@media (max-width: 480px) {
+    .danh-sach-san-pham {
+        grid-template-columns: 1fr; /* Chỉ 1 cột trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .san-pham-item img {
+        width: 100%; /* Làm ảnh rộng hơn trên điện thoại */
+        height: auto; /* Giữ tỷ lệ đúng */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        flex-direction: column; /* Menu dọc trên màn hình nhỏ */
+    }
+
+    .san-pham-item {
+        min-height: 230px; /* Giảm chiều cao sản phẩm */
+    }
+
+    .logo {
+        height: 120px; /* Giảm chiều cao logo trên màn hình nhỏ */
+    }
+
+    .danh-sach-san-pham {
+        grid-template-columns: 1fr; /* Chỉ 1 cột cho sản phẩm */
+    }
+}
 
 /* Thanh Menu */
 nav {
@@ -126,7 +201,7 @@ nav ul li:hover > .submenu {
     padding: 10px 15px;
     cursor: pointer;
     font-size: 24px;
-    border-radius: 5px;
+    border-radius: 50px;
     
     transition: background 0.3s ease, opacity 0.3s ease;
     opacity: 0.4; /* Nút mờ sẵn */
