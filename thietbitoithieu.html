@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiết bị tối thiểu</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
         <h2>Thiết Bị Nổi Bật</h2>
         <div class="danh-sach-san-pham">
-            <div class="san-pham-item">
+            <div class="san-pham-item" >
                 <img src="img/bo xep hinh cac phuong tien gt.png" alt="Bộ xếp hình các phương tiện giao thông">
                 <p>Bộ xếp hình các phương tiện giao thông</p>
             </div>
@@ -169,5 +182,108 @@
             <!-- Thêm nhiều sản phẩm khác tại đây -->
         </div>
     </section>
+    
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+
+        sp01: { ten: "Bộ xếp hình các phương tiện giao thông", moTa: "Bộ xếp hình mô phỏng các phương tiện giao thông giúp trẻ phát triển tư duy sáng tạo.", hinh: "img/bo xep hinh cac phuong tien gt.png" },
+sp02: { ten: "Bóng nhỏ", moTa: "Bóng nhỏ giúp trẻ em rèn luyện kỹ năng thể thao và sự linh hoạt.", hinh: "img/bong nho.png" },
+sp03: { ten: "Ca uống nước inox", moTa: "Ca inox bền bỉ, an toàn cho sức khỏe, lý tưởng cho trẻ em.", hinh: "img/ca uong nuoc inox.png" },
+sp04: { ten: "Cổng chui", moTa: "Cổng chui giúp trẻ phát triển kỹ năng vận động và thể chất.", hinh: "img/cong chui.png" },
+sp05: { ten: "Cột ném bóng", moTa: "Cột ném bóng rèn luyện sự chính xác và khả năng phối hợp tay mắt.", hinh: "img/cot nem bong.png" },
+sp06: { ten: "Đồng hồ đếm 2 mặt gỗ", moTa: "Đồng hồ gỗ giúp trẻ học cách quản lý thời gian và phát triển tư duy toán học.", hinh: "img/dong ho dem 2 mat go.png" },
+sp07: { ten: "Gậy thể dục", moTa: "Gậy thể dục hỗ trợ các bài tập vận động và cải thiện sức khỏe.", hinh: "img/gay the duc nho 30cm.png" },
+sp08: { ten: "Ghế nhựa đúc", moTa: "Ghế nhựa đúc chắc chắn, phù hợp cho phòng học và không gian trẻ em.", hinh: "img/ghe giao vien mat nhua duc.png" },
+sp09: { ten: "Hàng rào ghép lớn", moTa: "Hàng rào ghép lớn, dễ dàng lắp ráp, giúp tạo không gian chơi an toàn cho trẻ.", hinh: "img/hang rao ghep lon.png" },
+sp10: { ten: "Bàn giáo viên mặt nhựa", moTa: "Bàn giáo viên chắc chắn, thiết kế đơn giản, phù hợp với mọi không gian lớp học.", hinh: "img/ban giao vien mat nhua.png" },
+sp11: { ten: "Bàn tính học đếm nhựa", moTa: "Bàn tính nhựa giúp trẻ học đếm và phát triển kỹ năng toán học cơ bản.", hinh: "img/ban tinh hoc dem nhua.png" },
+sp12: { ten: "Bảng chun học toán", moTa: "Bảng chun giúp trẻ rèn luyện kỹ năng tính toán và tư duy logic.", hinh: "img/bang chun hoc toan.png" },
+sp13: { ten: "Bình ủ nước 20l", moTa: "Bình ủ nước 20L tiện lợi, giữ nhiệt lâu, sử dụng cho các trường học và khu vui chơi.", hinh: "img/binh u nuoc 20l.png" },
+sp14: { ten: "Bộ côn trùng", moTa: "Bộ côn trùng giúp trẻ em khám phá thế giới động vật, đặc biệt là các loài côn trùng.", hinh: "img/bo con trung.png" },
+sp15: { ten: "Bộ dinh dưỡng 1", moTa: "Bộ dinh dưỡng giúp trẻ tìm hiểu về các loại thực phẩm và dinh dưỡng.", hinh: "img/bo dinh duong 1.png" },
+sp16: { ten: "Bộ dinh dưỡng 2", moTa: "Bộ dinh dưỡng 2 giúp trẻ học về các nhóm thực phẩm và cách bổ sung dinh dưỡng.", hinh: "img/bo dinh duong 2.png" },
+sp17: { ten: "Bộ dinh dưỡng 3", moTa: "Bộ dinh dưỡng 3 hỗ trợ trẻ em phát triển thói quen ăn uống lành mạnh.", hinh: "img/bo dinh duong 3.png" },
+sp18: { ten: "Bộ dinh dưỡng 4", moTa: "Bộ dinh dưỡng 4 cung cấp kiến thức về các thực phẩm và chế độ ăn uống hợp lý.", hinh: "img/bo dinh duong 4.png" },
+sp19: { ten: "Bộ đồ chơi nấu ăn", moTa: "Bộ đồ chơi nấu ăn giúp trẻ phát triển kỹ năng sáng tạo và tư duy logic.", hinh: "img/bo do choi nau an mn.png" },
+sp20: { ten: "Bộ động vật biển", moTa: "Bộ động vật biển giúp trẻ khám phá và học hỏi về các sinh vật dưới biển.", hinh: "img/bo dong vat bien.png" },
+sp21: { ten: "Bộ động vật nuôi trong gia đình", moTa: "Bộ động vật nuôi trong gia đình giúp trẻ học về các loài động vật gần gũi trong cuộc sống.", hinh: "img/bo dong vat nuoi trong gd.png" },
+sp22: { ten: "Bộ hình khối 14 chi tiết", moTa: "Bộ hình khối giúp trẻ học về hình dạng, màu sắc và phát triển tư duy không gian.", hinh: "img/bo hinh khoi 14 chi tiet.png" },
+sp23: { ten: "Bộ xếp hình lăng Bác gỗ", moTa: "Bộ xếp hình gỗ mô phỏng Lăng Bác, giúp trẻ phát triển kỹ năng khéo léo và sự tỉ mỉ.", hinh: "img/bo xep hinh lang bac go.png" },
+sp24: { ten: "Bộ xếp hình trên xe 30 chi tiết", moTa: "Bộ xếp hình trên xe với 30 chi tiết giúp trẻ phát triển kỹ năng lắp ráp và sáng tạo.", hinh: "img/bo xep hinh tren xe 30 chi tiet.png" },
+sp25: { ten: "Cân chia vạch", moTa: "Cân chia vạch hỗ trợ trẻ học về khối lượng và cân đo.", hinh: "img/can chia vach.png" },
+sp26: { ten: "Bộ động vật trong rừng", moTa: "Bộ động vật trong rừng giúp trẻ khám phá thế giới động vật hoang dã và thiên nhiên.", hinh: "img/bo dong vat trong rung.png" },
+sp27: { ten: "Bộ dụng cụ bác sỹ", moTa: "Bộ dụng cụ bác sĩ giúp trẻ em học về nghề bác sĩ và phát triển khả năng chăm sóc sức khỏe.", hinh: "img/bo dung cu bac sy.png" },
+sp28: { ten: "Bộ ghép hình hoa 135 chi tiết", moTa: "Bộ ghép hình hoa 135 chi tiết giúp trẻ em phát triển kỹ năng kết hợp hình khối và sáng tạo.", hinh: "img/bo ghep hinh hoa 135 chi tiet.png" },
+sp29: { ten: "Giá để giày dép inox", moTa: "Giá để giày dép inox chắc chắn, bền bỉ và phù hợp với không gian gia đình hoặc trường học.", hinh: "img/gia de gay dep inox.png" },
+sp30: { ten: "Hộp thả hình", moTa: "Hộp thả hình giúp trẻ em phát triển khả năng nhận diện hình học và tư duy logic.", hinh: "img/hop tha hinh.png" },
+sp31: { ten: "Mô hình hàm răng", moTa: "Mô hình hàm răng giúp trẻ tìm hiểu về cấu trúc và chăm sóc răng miệng.", hinh: "img/mo hinh ham rang.png" },
+sp32: { ten: "Nút ghép lớn", moTa: "Nút ghép lớn giúp trẻ em phát triển kỹ năng phối hợp tay mắt và sự khéo léo.", hinh: "img/nut ghep lon.png" },
+sp33: { ten: "Sa bàn giao thông nhựa", moTa: "Sa bàn giao thông giúp trẻ học về luật giao thông và rèn luyện tư duy không gian.", hinh: "img/sa ban gt nhua.png" },
+sp34: { ten: "Thùng đựng nước inox có vòi", moTa: "Thùng đựng nước inox có vòi tiện lợi, sử dụng trong trường học, công viên và khu vui chơi.", hinh: "img/thung dung nuoc co voi.png" },
+sp35: { ten: "Thùng đựng rác", moTa: "Thùng đựng rác giúp giữ vệ sinh môi trường, thích hợp cho trường học và khu vực công cộng.", hinh: "img/thung dung rac.png" },
+sp36: { ten: "Vòng thể dục", moTa: "Vòng thể dục giúp trẻ em rèn luyện sức khỏe và sự dẻo dai.", hinh: "img/vong the duc nho phi 30.png" },
+sp37: { ten: "Xắc xô", moTa: "Xắc xô giúp trẻ phát triển khả năng lắc và học về sự phối hợp tay mắt.", hinh: "img/xac xo phi 18.png" },
+sp38: { ten: "Bộ lắp ráp xe lửa", moTa: "Bộ lắp ráp xe lửa giúp trẻ phát triển kỹ năng tư duy và sáng tạo trong việc lắp ghép các chi tiết.", hinh: "img/bo lap rap xe lua.png" },
+sp39: { ten: "Bộ xếp hình 51 chi tiết", moTa: "Bộ xếp hình 51 chi tiết giúp trẻ phát triển khả năng lắp ráp và sự kiên nhẫn.", hinh: "img/bo xep hinh xay dung 51 chi tiet.png" }
+        };
+    
+        function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 39);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

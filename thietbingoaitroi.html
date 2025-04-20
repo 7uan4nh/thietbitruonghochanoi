@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiết Bị Ngoài Trời</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -187,5 +200,125 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+            sp01: { ten: "Bộ cầu trượt liên hoàn 5 khối", moTa: "Bộ cầu trượt liên hoàn 5 khối", hinh: "img/bo cau truot lien hoan 5 khoi.png" },
+sp02: { ten: "Bộ 2 khối cầu trượt ống", moTa: "Bộ 2 khối cầu trượt ống", hinh: "img/bo 2 khoi cau truot ong.png" },
+sp03: { ten: "Bộ liên hoàn vận động quả bí ngô", moTa: "Bộ liên hoàn vận động quả bí ngô", hinh: "img/bo lien hoan van dong qua bi ngo.png" },
+sp04: { ten: "Bộ liên hoàn 5 khối con cá", moTa: "Bộ liên hoàn 5 khối con cá", hinh: "img/Bo lien hoan 5 khoi con ca.png" },
+sp05: { ten: "Bộ cầu trượt tàu hoả", moTa: "Bộ cầu trượt tàu hoả", hinh: "img/bo cau truot tau hoa.png" },
+sp06: { ten: "Xích đu 6 chỗ ngồi", moTa: "Xích đu 6 chỗ ngồi", hinh: "img/xich du 6 cho.png" },
+sp07: { ten: "Xích đu rồng vàng mái nhựa sóng", moTa: "Xích đu rồng vàng mái nhựa sóng", hinh: "img/xich du rong vang mai nhua song.png" },
+sp08: { ten: "Tượng ngựa vằn", moTa: "Tượng ngựa vằn", hinh: "img/tuong ngua van.png" },
+sp09: { ten: "Tượng cặp nai to", moTa: "Tượng cặp nai to", hinh: "img/tuong cap nai to.png" },
+sp10: { ten: "Tượng em bé chăn trâu", moTa: "Tượng em bé chăn trâu", hinh: "img/tuong em be chan trau.png" },
+sp11: { ten: "Tượng cô bé quàng khăn đỏ", moTa: "Tượng cô bé quàng khăn đỏ", hinh: "img/tuong co be quang khan do.png" },
+sp12: { ten: "Tượng thánh gióng", moTa: "Tượng thánh gióng", hinh: "img/tuong thanh giong.png" },
+sp13: { ten: "Tượng bạch tuyết và bảy chú lùn", moTa: "Tượng bạch tuyết và bảy chú lùn", hinh: "img/bach tuyet va bay chu lun.png" },
+sp14: { ten: "Tượng dê đen và dê trắng", moTa: "Tượng dê đen và dê trắng", hinh: "img/de den va de trang.png" },
+sp15: { ten: "Fitness đạp xe đôi", moTa: "Fitness đạp xe đôi", hinh: "img/fitness dap xe doi (1).png" },
+sp16: { ten: "Fitness lắc hông", moTa: "Fitness lắc hông", hinh: "img/fitness lac hong.png" },
+sp17: { ten: "Fitness xe đạp", moTa: "Fitness xe đạp", hinh: "img/fitness xe dap.png" },
+sp18: { ten: "Fitness xoay tay", moTa: "Fitness xoay tay", hinh: "img/fitness xoay tay.png" },
+sp19: { ten: "Bộ luyện gym cho trẻ 01", moTa: "Bộ luyện gym cho trẻ 01", hinh: "img/bo luyen gym 01.png" },
+sp20: { ten: "Bộ luyện gym cho trẻ 01B", moTa: "Bộ luyện gym cho trẻ 01B", hinh: "img/bo luyen gym 01B.png" },
+sp21: { ten: "Bộ luyện gym cho trẻ 02", moTa: "Bộ luyện gym cho trẻ 02", hinh: "img/bo luyen gym 02.png" },
+sp22: { ten: "Bộ luyện gym cho trẻ 04", moTa: "Bộ luyện gym cho trẻ 04", hinh: "img/bo luyen gym 04.png" },
+sp23: { ten: "Bộ luyện gym cho trẻ 04A", moTa: "Bộ luyện gym cho trẻ 04A", hinh: "img/bo luyen gym 04A.png" },
+sp24: { ten: "Bộ luyện gym cho trẻ 06A", moTa: "Bộ luyện gym cho trẻ 06A", hinh: "img/bo luyen gym 06A.png" },
+sp25: { ten: "Bộ luyện gym cho trẻ 07", moTa: "Bộ luyện gym cho trẻ 07", hinh: "img/bo luyen gym 07.png" },
+sp26: { ten: "Bộ luyện gym cho trẻ 09", moTa: "Bộ luyện gym cho trẻ 09", hinh: "img/bo luyen gym 09 (1).png" },
+sp27: { ten: "Bộ luyện nhảy cao cho bé", moTa: "Bộ luyện nhảy cao cho bé", hinh: "img/bo luyen nhay cao cho be.png" },
+sp28: { ten: "Bộ vui chơi vận động sunflower", moTa: "Bộ vui chơi vận động sunflower", hinh: "img/bo vui choi van dong sunflower 03.png" },
+sp29: { ten: "Fitness chạy bộ trên không", moTa: "Fitness chạy bộ trên không", hinh: "img/fitness chay bo tren khong (1).png" },
+sp30: { ten: "Bập bênh đôi", moTa: "Bập bênh đôi", hinh: "img/bap benh 2.png" },
+sp31: { ten: "Bập bênh đơn", moTa: "Bập bênh đơn", hinh: "img/bap benh don.png" },
+sp32: { ten: "Cầu thăng bằng dao động", moTa: "Cầu thăng bằng dao động", hinh: "img/cau thang bang dao dong.png" },
+sp33: { ten: "Cầu thăng bằng", moTa: "Cầu thăng bằng", hinh: "img/cau thang bang.png" },
+sp34: { ten: "Cầu trượt đôi", moTa: "Cầu trượt đôi", hinh: "img/cau truot doi.png" },
+sp35: { ten: "Đu quay mâm trên ray", moTa: "Đu quay mâm trên ray", hinh: "img/du quay mam tren ray.png" },
+sp36: { ten: "Mâm đu quay không ray", moTa: "Mâm đu quay không ray", hinh: "img/mam du quay ko ray.png" },
+sp37: { ten: "Thú nhún lò xo", moTa: "Thú nhún lò xo", hinh: "img/thu nhun loxo 2.png" },
+sp38: { ten: "Thú nhún lò xo hình con hổ", moTa: "Thú nhún lò xo hình con hổ", hinh: "img/thu nhun loxo con ho.png" },
+sp39: { ten: "Thú nhún lò xo hình cá heo", moTa: "Thú nhún lò xo hình cá heo", hinh: "img/thu nhun loxo.png" },
+sp40: { ten: "Xích đu sàn lắc", moTa: "Xích đu sàn lắc", hinh: "img/xich du san lac.png" },
+sp41: { ten: "Xích đu treo", moTa: "Xích đu treo", hinh: "img/xich du treo.png" },
+sp42: { ten: "Bộ vận động thể chất đa năng", moTa: "Bộ vận động thể chất đa năng", hinh: "img/bo van dong the chat da nang.png" },
+sp43: { ten: "Bộ leo núi bán cầu ngũ giác", moTa: "Bộ leo núi bán cầu ngũ giác", hinh: "img/bo leo nui ban cau ngu giac.png" },
+sp44: { ten: "Bộ leo núi cầu trượt", moTa: "Bộ leo núi cầu trượt", hinh: "img/bo leo nui cau truot.png" },
+sp45: { ten: "Hầm chui vận động hình con sâu", moTa: "Hầm chui vận động hình con sâu", hinh: "img/ham chui van dong con sau.png" },
+sp46: { ten: "Hầm chui vận động hình cú mèo", moTa: "Hầm chui vận động hình cú mèo", hinh: "img/ham chui van dong cu meo.png" },
+sp47: { ten: "Hầm chui vận động hình xe hỏa", moTa: "Hầm chui vận động hình xe hỏa", hinh: "img/ham chui van dong tau hoa.png" },
+sp48: { ten: "Thăng bằng cầu cong", moTa: "Thăng bằng cầu cong", hinh: "img/thang bang cau cong.png" },
+sp49: { ten: "Thăng bằng 4 cầu thẳng", moTa: "Thăng bằng 4 cầu thẳng", hinh: "img/thang bang 4 cau thang.png" },
+sp50: { ten: "Bàn chơi cát và nước", moTa: "Bàn chơi cát và nước", hinh: "img/ban choi cat nuoc thap bong.png" },
+sp51: { ten: "Cầu trượt đơn", moTa: "Cầu trượt đơn", hinh: "img/cau truot don.png" },
+sp52: { ten: "Bộ cầu trượt xích đu cầu chui", moTa: "Bộ cầu trượt xích đu cầu chui", hinh: "img/bo cau truot xich du cau chui.png" },
+sp53: { ten: "Bộ liên hoàn nhà leo 2 khối", moTa: "Bộ liên hoàn nhà leo 2 khối", hinh: "img/bo lien hoan nha leo 2 khoi.png" },
+sp54: { ten: "Ngôi nhà cổ tích hình nấm", moTa: "Ngôi nhà cổ tích hình nấm", hinh: "img/ngoi nha co tich hinh nam.png" },
+sp55: { ten: "Ngôi nhà cổ tích có bàn ghế", moTa: "Ngôi nhà cổ tích có bàn ghế", hinh: "img/ngoi nha than tien co ban ghe.png" },
+sp56: { ten: "Bộ đồ chơi kỹ thuật", moTa: "Bộ đồ chơi kỹ thuật", hinh: "img/bo do choi ky thuat.png" },
+sp57: { ten: "Nhà chơi bể bóng cầu trượt", moTa: "Nhà chơi bể bóng cầu trượt", hinh: "img/nha choi be bong cau truot.png" },
+sp58: { ten: "Bộ liên hoàn cầu trượt xích đu", moTa: "Bộ liên hoàn cầu trượt xích đu", hinh: "img/bo lien hoan lau dai cau truot xich du.png" }
+        }
+        function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>
