@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn Hóa Học</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -132,5 +145,97 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+    sp01: { ten: "Bộ dụng cụ Hóa Lớp 8 - GV", moTa: "Bộ dụng cụ Hóa Lớp 8 - GV", hinh: "img/Bo dung cu Hoa (GV)L8.png" },
+    sp02: { ten: "Bộ dụng cụ Hóa Lớp 8 - HS", moTa: "Bộ dụng cụ Hóa Lớp 8 - HS", hinh: "img/Bo dung cu Hoa lop 8(HS).png" },
+    sp03: { ten: "Bộ hóa chất thực hành lớp 8", moTa: "Bộ hóa chất thực hành lớp 8", hinh: "img/hoa chat lop  8.png" },
+    sp04: { ten: "Bộ hóa chất thực hành lớp 9", moTa: "Bộ hóa chất thực hành lớp 9", hinh: "img/Bo hoa chat lop 9.png" },
+    sp05: { ten: "Phân vi lượng", moTa: "Phân vi lượng", hinh: "img/Phan vi luong.png" },
+    sp06: { ten: "Hộp mẫu phân bón kép", moTa: "Hộp mẫu phân bón kép", hinh: "img/Hop mau phan bon kep.png" },
+    sp07: { ten: "Hộp mẫu dầu mỏ và các sản phẩm từ dầu mỏ", moTa: "Hộp mẫu dầu mỏ và các sản phẩm từ dầu mỏ", hinh: "img/Hop mau sp che bien tu dau mo.png" },
+    sp08: { ten: "Hộp mẫu các loại cao su", moTa: "Hộp mẫu các loại cao su", hinh: "img/hop mau cao su.png" },
+    sp09: { ten: "Hộp mẫu các loại chất dẻo", moTa: "Hộp mẫu các loại chất dẻo", hinh: "img/Hop mau chat deo.png" },
+    sp10: { ten: "Mô hình phân tử dạng đặc", moTa: "Mô hình phân tử dạng đặc", hinh: "img/MH phan tu dang dac.png" },
+    sp11: { ten: "Mô hình phân tử dạng rống", moTa: "Mô hình phân tử dạng rống", hinh: "img/MH phan tu dang rong.png" },
+    sp12: { ten: "Dụng cụ điều chế chất khí từ chất rắn và...", moTa: "Dụng cụ điều chế chất khí từ chất rắn và...", hinh: "img/Dung cu dieu che chat khi tu chat ran long.png" },
+    sp13: { ten: "Thiết bị chưng cất", moTa: "Thiết bị chưng cất", hinh: "img/Thiet bi trung cat.png" },
+    sp14: { ten: "Hộp mẫu phân bón hóa học", moTa: "Hộp mẫu phân bón hóa học", hinh: "img/Hop mau phan bon hoa hoc.png" },
+    sp15: { ten: "Thiết bị điện phân nước", moTa: "Thiết bị điện phân nước", hinh: "img/Thiet bi dien phan nuoc.png" },
+    sp16: { ten: "Ống dẫn thủy tinh các loại", moTa: "Ống dẫn thủy tinh các loại", hinh: "img/Ong dan thuy tinh cac loai.png" },
+    sp17: { ten: "Bộ nút cao su các loại", moTa: "Bộ nút cao su các loại", hinh: "img/Bo nut cao su cac loai.png" },
+    sp18: { ten: "Kẹp đốt hóa chất", moTa: "Kẹp đốt hóa chất", hinh: "img/Kep dot hoa chat.png" },
+    sp19: { ten: "Bình cầu có nhánh", moTa: "Bình cầu có nhánh", hinh: "img/binh cau co nhanh.png" },
+    sp20: { ten: "Bình cầu đáy bằng", moTa: "Bình cầu đáy bằng", hinh: "img/binh cau day bang.png" },
+    sp21: { ten: "Bình kíp tiêu chuẩn", moTa: "Bình kíp tiêu chuẩn", hinh: "img/binh kip tieu chuan.png" },
+    sp22: { ten: "Bình tam giác 250ml", moTa: "Bình tam giác 250ml", hinh: "img/Binh tam giac 250ml.png" },
+    sp23: { ten: "Bình tia nhựa", moTa: "Bình tia nhựa", hinh: "img/binh tia nhua.png" },
+    sp24: { ten: "Bộ dụng cụ điện phân dd NaCl", moTa: "Bộ dụng cụ điện phân dd NaCl", hinh: "img/bo dung cu dien phan dd NaCl.png" },
+    sp25: { ten: "Nhiệt kế rượu", moTa: "Nhiệt kế rượu", hinh: "img/Nhiet ke ruou.png" },
+    sp26: { ten: "Kiềng nung", moTa: "Kiềng nung", hinh: "img/Kieng nung.png" },
+    sp27: { ten: "Dụng cụ thử tính dẫn điện", moTa: "Dụng cụ thử tính dẫn điện", hinh: "img/dung cu thu tinh dan dien.png" },
+    sp28: { ten: "Muỗng đốt hóa chất", moTa: "Muỗng đốt hóa chất", hinh: "img/muong dot hoa chat.png" },
+    sp29: { ten: "Ống sinh hàn thẳng", moTa: "Ống sinh hàn thẳng", hinh: "img/ong sinh han thang.png" },
+    sp30: { ten: "Nút cao su có lỗ", moTa: "Nút cao su có lỗ", hinh: "img/Nut cao su co lo.png" }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

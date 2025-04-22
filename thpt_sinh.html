@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn Sinh Học</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -76,5 +89,147 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+  sp01: {
+    ten: "Bộ dụng cụ giâm chiết ghép",
+    moTa: "Bộ dụng cụ này dùng để thực hiện các thí nghiệm giâm chiết và ghép cây, giúp tìm hiểu quá trình sinh trưởng của cây.",
+    hinh: "img/Bo dung cu giam chiet ghep.png"
+  },
+  sp02: {
+    ten: "Bộ TN DATALOGGER SCIENCE SCOPE môn Sinh - DC",
+    moTa: "Bộ dụng cụ thí nghiệm sử dụng công nghệ Datalogger để ghi lại dữ liệu trong các thí nghiệm môn Sinh học.",
+    hinh: "img/Bo TN DATALOGGER SCIENCE SCOPE môn Sinh - DC.png"
+  },
+  sp03: {
+    ten: "Cốc thủy tinh",
+    moTa: "Cốc thủy tinh dùng trong các thí nghiệm hóa học để chứa hoặc đun nóng dung dịch.",
+    hinh: "img/Coc thuy tinh.png"
+  },
+  sp04: {
+    ten: "Chày cối xứ",
+    moTa: "Dụng cụ dùng để nghiền nát hoặc trộn các chất rắn trong các thí nghiệm hóa học.",
+    hinh: "img/Coi chay xu.png"
+  },
+  sp05: {
+    ten: "Chậu lồng Bocan",
+    moTa: "Chậu lồng Bocan dùng để chứa và giữ các vật thể trong các thí nghiệm sinh học hoặc hóa học.",
+    hinh: "img/Chau long bocan.png"
+  },
+  sp06: {
+    ten: "Khay mổ và tấm kê vật mổ",
+    moTa: "Dùng trong các thí nghiệm sinh học để mổ và nghiên cứu các mẫu vật.",
+    hinh: "img/Khay mo va tam ke vat mo.png"
+  },
+  sp07: {
+    ten: "La men",
+    moTa: "La men là dụng cụ dùng để làm nóng các chất lỏng hoặc dùng trong các thí nghiệm hóa học.",
+    hinh: "img/La men.png"
+  },
+  sp08: {
+    ten: "Lọ thủy tinh 100ml có ống hút nhỏ giọt",
+    moTa: "Lọ thủy tinh nhỏ dùng để chứa dung dịch và có ống hút nhỏ giọt để lấy mẫu.",
+    hinh: "img/Lo thuy tinh 100ml co ong hut nho giot.png"
+  },
+  sp09: {
+    ten: "Giá để ống nghiệm",
+    moTa: "Dùng để giữ các ống nghiệm trong thí nghiệm, giúp bảo quản các ống nghiệm trong quá trình nghiên cứu.",
+    hinh: "img/gia de ong nghiem.png"
+  },
+  sp10: {
+    ten: "Hệ thống ghi đòn",
+    moTa: "Hệ thống dùng để ghi lại các số liệu thí nghiệm, giúp theo dõi quá trình thử nghiệm.",
+    hinh: "img/he thong don ghi.png"
+  },
+  sp11: {
+    ten: "Kính hiển vi 13A",
+    moTa: "Kính hiển vi 13A dùng để quan sát các mẫu vật ở độ phóng đại cao trong các thí nghiệm sinh học.",
+    hinh: "img/kinh hien vi 13A.png"
+  },
+  sp12: {
+    ten: "La men",
+    moTa: "La men (lại một lần nữa) là dụng cụ đun nóng hoặc chứa chất lỏng trong các thí nghiệm.",
+    hinh: "img/La men.png"
+  },
+  sp13: {
+    ten: "Nhiệt kế y tế",
+    moTa: "Dụng cụ dùng để đo nhiệt độ cơ thể trong các thí nghiệm sinh lý học hoặc y tế.",
+    hinh: "img/Nhiet ke y te.png"
+  },
+  sp14: {
+    ten: "Mô hình cấu trúc không gian ADN",
+    moTa: "Mô hình ba chiều của phân tử ADN, giúp học sinh dễ dàng hình dung cấu trúc của ADN.",
+    hinh: "img/MH cau truc không gian phan tu ADN.png"
+  },
+  sp15: {
+    ten: "Những biến đổi NST trong nguyên phân giảm phân",
+    moTa: "Bộ dụng cụ này dùng để mô phỏng và quan sát các quá trình biến đổi của nhiễm sắc thể trong các giai đoạn phân bào.",
+    hinh: "img/Nhung dien bien NST trong nguyen phan giam phan.png"
+  },
+  sp16: {
+    ten: "Giá để ống nghiệm",
+    moTa: "Dụng cụ dùng để giữ các ống nghiệm trong thí nghiệm, giúp bảo quản các ống nghiệm trong quá trình nghiên cứu.",
+    hinh: "img/gia de ong nghiem.png"
+  }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

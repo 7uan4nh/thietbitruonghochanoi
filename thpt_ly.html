@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn Lý</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
+
 </head>
 <body>
     <section class="san-pham">
@@ -188,5 +202,287 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+    sp01: {
+        ten: "TN hiện tượng quang điện ngoài",
+        moTa: "",
+        hinh: "img/TN hien tuong quang dien ngoai.png"
+    },
+    sp02: {
+        ten: "Xác định hệ số căng mặt ngoài của chất lỏng",
+        moTa: "",
+        hinh: "img/Xac dinh he so cang mat ngoai cua chat long.png"
+    },
+    sp03: {
+        ten: "Bộ TN xác định hệ số ma sát",
+        moTa: "",
+        hinh: "img/Xac dinh he so masat.png"
+    },
+    sp04: {
+        ten: "Kênh sóng nước",
+        moTa: "",
+        hinh: "img/Kenh song nuoc.png"
+    },
+    sp05: {
+        ten: "Bộ TN chuyển động thẳng đều và biến đổi đều",
+        moTa: "",
+        hinh: "img/KS chuyen dong thang deu va bien doi deu.png"
+    },
+    sp06: {
+        ten: "Bộ TN khảo sát lực đàn hồi và quy tắc Momen lực",
+        moTa: "",
+        hinh: "img/KS luc dan hoi va quy tac momen luc.png"
+    },
+    sp07: {
+        ten: "Bộ TN khảo sát lực quán tính ly tâm",
+        moTa: "",
+        hinh: "img/KS luc quan tinh ly tam.png"
+    },
+    sp08: {
+        ten: "Khớp nối đa năng",
+        moTa: "",
+        hinh: "img/Khop da nang.png"
+    },
+    sp09: {
+        ten: "Máy phát âm tần",
+        moTa: "",
+        hinh: "img/May phat am tan.png"
+    },
+    sp10: {
+        ten: "Nam châm",
+        moTa: "",
+        hinh: "img/Nam cham.png"
+    },
+    sp11: {
+        ten: "Ống Newton",
+        moTa: "",
+        hinh: "img/Ong niuton.png"
+    },
+    sp12: {
+        ten: "Quy tắc hợp lực đồng quy-song song",
+        moTa: "",
+        hinh: "img/Quy tac hop luc dong quy, song song.png"
+    },
+    sp13: {
+        ten: "TN định luật Boilo-Mariot đối với chất khí",
+        moTa: "",
+        hinh: "img/TN dinh luat Boilo - Mariot doi voi chat khi.png"
+    },
+    sp14: {
+        ten: "Bộ TN định luật Becnulli",
+        moTa: "",
+        hinh: "img/BBo tn dinh luat bec - nu-li.png"
+    },
+    sp15: {
+        ten: "Bộ TN điện tích - Điện trường",
+        moTa: "",
+        hinh: "img/Bo tn dien tich - dien truong.png"
+    },
+    sp16: {
+        ten: "Bộ TN đo vận tốc truyền âm trong không khí",
+        moTa: "",
+        hinh: "img/Bo TN do van toc truyen am trong khong khi.png"
+    },
+    sp17: {
+        ten: "Bộ thí nghiệm dòng điện không đổi",
+        moTa: "",
+        hinh: "img/Bo TN dong dien khong doi.png"
+    },
+    sp18: {
+        ten: "Bộ TN dòng điện trong các môi trường",
+        moTa: "",
+        hinh: "img/Bo tn dong dien trong cac moi truong.png"
+    },
+    sp19: {
+        ten: "Bộ TN ghi dao động của con lắc đơn",
+        moTa: "",
+        hinh: "img/Bo tn ghi dao dong cua con lac don.png"
+    },
+    sp20: {
+        ten: "Bộ TN hiện tượng mao dẫn",
+        moTa: "",
+        hinh: "img/Bo TN hien tuong mao dan.png"
+    },
+sp21: {
+    ten: "Đồng hồ đo điện đa năng",
+    moTa: "Dùng để đo điện áp, dòng điện và điện trở trong các mạch điện.",
+    hinh: "img/Dong ho do dien da nang (1).png"
+},
+sp22: {
+    ten: "Bộ TN Khảo sát chuyển động rơi tự do",
+    moTa: "Thiết bị dùng để quan sát và phân tích chuyển động rơi tự do của vật.",
+    hinh: "img/KS chuyen dong roi tu do.png"
+},
+sp23: {
+    ten: "Bộ TN lực từ và cảm ứng điện từ",
+    moTa: "Dùng để minh họa hiện tượng cảm ứng điện từ và lực từ trong mạch điện.",
+    hinh: "img/Bo tn luc tu va cam ung dien tu.png"
+},
+sp24: {
+    ten: "Bộ TN máy phát điện xoay chiều 3 pha",
+    moTa: "Mô phỏng hoạt động của máy phát điện xoay chiều ba pha.",
+    hinh: "img/Bo TN may phat dien xoay chieu 3 pha.png"
+},
+sp25: {
+    ten: "Bộ TN TH về mạch điện xoay chiều",
+    moTa: "Hỗ trợ thí nghiệm thực hành các mạch điện xoay chiều cơ bản.",
+    hinh: "img/bo tn TH ve mach dien xoay chieu.png"
+},
+sp26: {
+    ten: "Bộ TN về Momen quán tính của vật rắn",
+    moTa: "Dùng để khảo sát momen quán tính và chuyển động quay của vật rắn.",
+    hinh: "img/Bo TN ve Momen quan tinh cua vat ran.png"
+},
+sp27: {
+    ten: "Bộ TN xác định bước sóng ánh sáng",
+    moTa: "Thiết bị xác định bước sóng ánh sáng qua giao thoa và nhiễu xạ.",
+    hinh: "img/Bo TN xac dinh buoc song anh sang.png"
+},
+sp28: {
+    ten: "Bộ TN đo TP nằm ngang của từ trường trái đất",
+    moTa: "Dùng để xác định thành phần nằm ngang của từ trường Trái Đất.",
+    hinh: "img/BoTN Ä‘o TP nam ngang cua tu truong trai dat.png"
+},
+sp29: {
+    ten: "Bộ TN DATALOGGER SCIENCE SCOPE môn lý - dùng chung",
+    moTa: "Bộ thu thập dữ liệu thí nghiệm đa năng dùng cho môn Vật lý.",
+    hinh: "img/Bo TN DATALOGGER SCIENCE SCOPE môn ly- dung chung.png"
+},
+sp30: {
+    ten: "Hộp quả nặng",
+    moTa: "Dụng cụ hỗ trợ các thí nghiệm về trọng lực và lực căng.",
+    hinh: "img/Hop qua nang.png"
+},
+sp31: {
+    ten: "Biến thế nguồn",
+    moTa: "Thiết bị biến đổi điện áp dùng trong thí nghiệm điện học.",
+    hinh: "img/bien the nguon.png"
+},
+sp32: {
+    ten: "Bộ đếm khí",
+    moTa: "Thiết bị ghi nhận lưu lượng hoặc số lượng khí qua hệ thống.",
+    hinh: "img/bo dem khi.png"
+},
+sp33: {
+    ten: "Bộ thí nghiệm hiện tượng tự cảm",
+    moTa: "Minh họa nguyên lý và hiện tượng tự cảm trong mạch điện.",
+    hinh: "img/bo TN hien tuong tu cam.png"
+},
+sp34: {
+    ten: "Bộ thí nghiệm sóng nước",
+    moTa: "Dùng để quan sát và nghiên cứu hiện tượng sóng cơ học trên mặt nước.",
+    hinh: "img/Bo TN song nuoc.png"
+},
+sp35: {
+    ten: "Dây nối",
+    moTa: "Dây dẫn điện chuyên dùng để kết nối các thiết bị thí nghiệm.",
+    hinh: "img/day noi.png"
+},
+sp36: {
+    ten: "Điện kế chứng minh",
+    moTa: "Thiết bị minh họa nguyên lý hoạt động của điện kế trong mạch.",
+    hinh: "img/dien ke chung minh (1).png"
+},
+sp37: {
+    ten: "Bộ thí nghiệm sóng dừng",
+    moTa: "Thiết bị dùng để quan sát và nghiên cứu hiện tượng sóng dừng trong vật lý.",
+    hinh: "img/Bo tn song dung.png"
+},
+sp38: {
+    ten: "Đồng hồ đo thời gian hiện số",
+    moTa: "Dụng cụ đo thời gian chính xác, hiển thị bằng màn hình số.",
+    hinh: "img/Dong ho do thoi gian hien so.png"
+},
+sp39: {
+    ten: "Hộp công tắc",
+    moTa: "Thiết bị chứa các công tắc điều khiển dòng điện trong các thí nghiệm.",
+    hinh: "img/Hop cong tac.png"
+},
+sp40: {
+    ten: "Bộ TN TH dao động cơ học",
+    moTa: "Hỗ trợ thí nghiệm dao động điều hòa và dao động tắt dần.",
+    hinh: "img/bo tn TH dao dong co hoc.png"
+},
+sp41: {
+    ten: "Bộ TN máy biến áp và truyền tải điện năng",
+    moTa: "Mô phỏng hoạt động của máy biến áp và hệ thống truyền tải điện.",
+    hinh: "img/Bo TN may bien ap va truyen tai dien nang.png"
+},
+sp42: {
+    ten: "Bộ thí nghiệm quang hình 1",
+    moTa: "Dùng để nghiên cứu sự tạo ảnh của thấu kính và gương trong quang học.",
+    hinh: "img/Bo tn quang hinh 1.png"
+},
+sp43: {
+    ten: "Bộ thí nghiệm quang hình 2",
+    moTa: "Bổ sung cho bộ quang hình 1, giúp khảo sát các hiện tượng khúc xạ, phản xạ ánh sáng.",
+    hinh: "img/Bo tn quang hinh 2.png"
+},
+sp44: {
+    ten: "Bộ thí nghiệm quang phổ",
+    moTa: "Dùng để phân tích và nhận biết các dải quang phổ từ nguồn sáng khác nhau.",
+    hinh: "img/Bo tn quang pho.png"
+}
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

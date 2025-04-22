@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn Lý</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -485,5 +498,486 @@
         </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+            
+  sp01: {
+    ten: "Bộ DC THTN Lý 9 - HS( Phần Quang A)",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm Lý 9 - HS (Phần Quang A).",
+    hinh: "img/Bo dc THTN ly 9HS (Phan quang A).png"
+  },
+  sp02: {
+    ten: "Bộ DC THTN Lý 9 - HS (Phần Quang B)",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm Lý 9 - HS (Phần Quang B).",
+    hinh: "img/Bo dc THTN ly 9HS (Phan quang B).png"
+  },
+  sp03: {
+    ten: "Bộ DC Thực hành Lý 9 - GV",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm Lý 9 dành cho giáo viên.",
+    hinh: "img/Bo dung cu thuc hanh Ly 9 GV.png"
+  },
+  sp04: {
+    ten: "Bộ DC Thực hành Lý 9 - HS (Phần điện)",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm Lý 9 dành cho học sinh, phần điện.",
+    hinh: "img/Bo dung cu thuc hanh Ly 9HS (Phan dien).png"
+  },
+  sp05: {
+    ten: "Bộ THTN Lý 9 - HS (Phần điện từ)",
+    moTa: "Bộ thí nghiệm thực hành Lý 9 dành cho học sinh, phần điện từ.",
+    hinh: "img/Bo THTN ly 9 HS( Phan dien tu).png"
+  },
+  sp06: {
+    ten: "Bộ THTN Lý 9 (Phần lẻ)",
+    moTa: "Bộ thí nghiệm thực hành Lý 9, phần lẻ cho các thực hành bổ sung.",
+    hinh: "img/Bo THTN ly 9(Phan le).png"
+  },
+  sp07: {
+    ten: "Bô DC thực hành TN Lý 8 - GV",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm TN Lý 8 dành cho giáo viên.",
+    hinh: "img/Bo dung cu Hoa (GV)L8.png"
+  },
+  sp08: {
+    ten: "Bộ DC thực hành TN Lý 8 - HS",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm TN Lý 8 dành cho học sinh.",
+    hinh: "img/Bo dung cu Hoa lop 8(HS).png"
+  },
+  sp09: {
+    ten: "Bộ DC TN âm lớp 7",
+    moTa: "Bộ dụng cụ thí nghiệm TN âm lớp 7.",
+    hinh: "img/Bo TN am lop 7.png"
+  },
+  sp10: {
+    ten: "Bộ thực hành TN Lý 7 - Phần Quang",
+    moTa: "Bộ thực hành thí nghiệm Lý 7, phần quang học.",
+    hinh: "img/Bo TN thuc hanh ly 7 (phanquang).png"
+  },
+  sp11: {
+    ten: "Bộ thực hành TN điện 7 - HS",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm điện lớp 7 dành cho học sinh.",
+    hinh: "img/Bo TN thuc hanh dien 7.png"
+  },
+  sp12: {
+    ten: "Bộ Thực hành TN Lý 7 - GV",
+    moTa: "Bộ dụng cụ thực hành thí nghiệm Lý 7 dành cho giáo viên.",
+    hinh: "img/Bo TN thuc hanh dien 7.png"
+  },
+  sp13: {
+    ten: "Bộ DC thực hành Lý 6(HS)",
+    moTa: "Bộ dụng cụ thực hành Lý 6 dành cho học sinh.",
+    hinh: "img/Bo dc thuc hanh Ly 6(HS).png"
+  },
+  sp14: {
+    ten: "Điện kế chứng minh",
+    moTa: "Điện kế dùng để chứng minh các thí nghiệm về điện.",
+    hinh: "img/dien ke chung minh (1).png"
+  },
+  sp15: {
+    ten: "Bộ TN từ phổ - Đ&...",
+    moTa: "Bộ thí nghiệm từ phổ, dùng trong các thí nghiệm vật lý.",
+    hinh: "img/bo tn tu pho - duong suc.png"
+  },
+  sp16: {
+    ten: "Bộ TN từ phổ trong ống dây",
+    moTa: "Bộ thí nghiệm từ phổ trong ống dây, phục vụ cho các thí nghiệm về từ trường.",
+    hinh: "img/bo tn tu pho trong ong day.png"
+  },
+  sp17: {
+    ten: "Cân Robecvan",
+    moTa: "Cân Robecvan dùng trong các thí nghiệm vật lý và hóa học.",
+    hinh: "img/can robecval.png"
+  },
+  sp18: {
+    ten: "Bộ lực kế",
+    moTa: "Bộ lực kế dùng trong các thí nghiệm vật lý để đo lực.",
+    hinh: "img/bo luc ke.png"
+  },
+  sp19: {
+    ten: "Bộ quả gia trọng",
+    moTa: "Bộ quả gia trọng dùng để xác định trọng lượng.",
+    hinh: "img/bo qua gia trong.png"
+  },
+  sp20: {
+    ten: "Máy gõ nhip",
+    moTa: "Máy dùng để gõ nhịp trong các thí nghiệm âm học.",
+    hinh: "img/may go nhip.png"
+  },
+  sp21: {
+    ten: "MH động cơ điện - Máy phát điện",
+    moTa: "Máy phát điện và động cơ điện dùng trong các thí nghiệm vật lý.",
+    hinh: "img/MH Ä‘ong co dien  may phat dien.png"
+  },
+  sp22: {
+    ten: "Bộ TN chạy động cơ nhỏ bằng pin mặt trời",
+    moTa: "Bộ thí nghiệm chạy động cơ nhỏ sử dụng năng lượng từ pin mặt trời.",
+    hinh: "img/bo tn chay dong co nho bang pin mat troi.png"
+  },
+  sp23: {
+    ten: "Bộ TN dãn nở dài vì nhiệt của chất rắn",
+    moTa: "Bộ thí nghiệm về sự dãn nở dài của chất rắn khi bị nung nóng.",
+    hinh: "img/Bo tn luc tu xuat hien trong su no dai vi nhiet cua chat ran.png"
+  },
+  sp24: {
+    ten: "Bộ TN nở khối vì nhiệt của chất rắn",
+    moTa: "Bộ thí nghiệm nở khối của chất rắn khi thay đổi nhiệt độ.",
+    hinh: "img/bo tn no khoi vi nhiet cua chat ran.png"
+  },
+  sp25: {
+    ten: "Bộ TN Ơ-Xtet",
+    moTa: "Bộ thí nghiệm về hiệu ứng Ơ-Xtet trong vật lý.",
+    hinh: "img/Bo tn Oxtet.png"
+  },
+  sp26: {
+    ten: "Bộ TN phân tích ánh sáng trắng bằng lăng...",
+    moTa: "Bộ thí nghiệm phân tích ánh sáng trắng bằng lăng kính.",
+    hinh: "img/Bo tn phan tich anh sang trang bang lang kinh.png"
+  },
+  sp27: {
+    ten: "Bộ TN tác dụng nhiệt của ánh sáng",
+    moTa: "Bộ thí nghiệm nghiên cứu tác dụng nhiệt của ánh sáng.",
+    hinh: "img/bo tn tac dung nhiet cua anh sang.png"
+  },
+  sp28: {
+    ten: "Âm thoa và búa cao su",
+    moTa: "Bộ âm thoa và búa cao su dùng trong thí nghiệm âm học.",
+    hinh: "img/Am thoa va bua cao su.png"
+  },
+  sp29: {
+    ten: "Biến thế thực hành",
+    moTa: "Biến thế thực hành dùng trong các thí nghiệm về điện.",
+    hinh: "img/bien the thuc hanh.png"
+  },
+  sp30: {
+    ten: "Biến trở con chạy",
+    moTa: "Biến trở con chạy dùng trong các thí nghiệm điện.",
+    hinh: "img/bien tro con chay.png"
+  },
+  sp31: {
+    ten: "Bộ đèn Lazer và giá lắp",
+    moTa: "Bộ đèn Lazer và giá lắp dùng cho các thí nghiệm quang học.",
+    hinh: "img/bo den lazer va gia lap.png"
+  },
+  sp32: {
+    ten: "Biến thế nguồn",
+    moTa: "Biến thế nguồn dùng trong các thí nghiệm điện áp và dòng điện.",
+    hinh: "img/bien the nguon.png"
+  },
+  sp33: {
+    ten: "Thấu kính phân kỳ",
+    moTa: "Thấu kính phân kỳ dùng trong các thí nghiệm quang học.",
+    hinh: "img/thau kinh phan ky.png"
+  },
+  sp34: {
+    ten: "Thấu kính hội tụ",
+    moTa: "Thấu kính hội tụ dùng trong các thí nghiệm quang học.",
+    hinh: "img/thau kinh hoi tu.png"
+  },
+  sp35: {
+    ten: "Thước cuộn",
+    moTa: "Thước cuộn dùng trong các thí nghiệm đo đạc chiều dài.",
+    hinh: "img/thuoc cuon.png"
+  },
+  sp36: {
+    ten: "Vol kế 1 chiều",
+    moTa: "Vol kế 1 chiều dùng để đo thể tích chất lỏng.",
+    hinh: "img/Vol ke 1 chieu.png"
+  },
+  sp37: {
+    ten: "Vol kế xoay chiểu",
+    moTa: "Vol kế xoay chiều dùng trong các thí nghiệm đo thể tích.",
+    hinh: "img/Von ke xoay chieu.png"
+  },
+  sp38: {
+    ten: "Vòng tròn chia độ",
+    moTa: "Vòng tròn chia độ dùng trong các thí nghiệm đo đạc.",
+    hinh: "img/vong tron chia do.png"
+  },
+  sp39: {
+    ten: "Xe lăn",
+    moTa: "Xe lăn dùng cho các thí nghiệm về cơ học và chuyển động.",
+    hinh: "img/xe lan.png"
+  },
+  sp40: {
+    ten: "MH máy ảnh",
+    moTa: "Máy ảnh dùng trong các thí nghiệm quang học và chụp ảnh.",
+    hinh: "img/MH may anh.png"
+  },
+  sp41: {
+    ten: "Mô tô 1 chiều",
+    moTa: "Mô tô 1 chiều dùng trong thí nghiệm về cơ học và động lực học.",
+    hinh: "img/moto 1 chieu.png"
+  },
+   sp42: {
+    ten: "Nam châm chữ U",
+    moTa: "Nam châm có hình dạng chữ U dùng trong thí nghiệm từ trường.",
+    hinh: "img/nam cham chu u.png"
+  },
+  sp43: {
+    ten: "Nam châm điện",
+    moTa: "Nam châm hoạt động khi có dòng điện chạy qua.",
+    hinh: "img/nam cham dien.png"
+  },
+  sp44: {
+    ten: "Nguồn phát âm vi mạch",
+    moTa: "Nguồn phát âm dùng trong các thí nghiệm vi mạch.",
+    hinh: "img/nguon phat am vi mach.png"
+  },
+  sp45: {
+    ten: "Nguồn sáng",
+    moTa: "Nguồn sáng dùng trong các thí nghiệm quang học.",
+    hinh: "img/nguon sang.png"
+  },
+  sp46: {
+    ten: "Ampe kế xoay chiều",
+    moTa: "Ampe kế đo dòng điện xoay chiều.",
+    hinh: "img/Am pe ke xoay chieu.png"
+  },
+  sp47: {
+    ten: "Biến trở than",
+    moTa: "Biến trở sử dụng vật liệu than để điều chỉnh điện trở.",
+    hinh: "img/bien tro than.png"
+  },
+  sp48: {
+    ten: "Bình điện phân",
+    moTa: "Bình dùng trong thí nghiệm điện phân.",
+    hinh: "img/Binh dien phan.png"
+  },
+  sp49: {
+    ten: "Bình nhiệt lượng",
+    moTa: "Bình dùng trong thí nghiệm đo nhiệt lượng.",
+    hinh: "img/binh nhiet luon.png"
+  },
+  sp50: {
+    ten: "Bình nhựa trong suốt",
+    moTa: "Bình nhựa trong suốt dùng trong thí nghiệm vật lý.",
+    hinh: "img/binh nhua trong suot.png"
+  },
+  sp51: {
+    ten: "Bình tràn",
+    moTa: "Bình dùng để đo thể tích hoặc chứa chất lỏng.",
+    hinh: "img/binh tran.png"
+  },
+  sp52: {
+    ten: "Chốt",
+    moTa: "Chốt dùng để giữ các vật thể trong thí nghiệm.",
+    hinh: "img/chot.png"
+  },
+  sp53: {
+    ten: "Chuông điện xoay chiều",
+    moTa: "Chuông điện hoạt động bằng dòng điện xoay chiều.",
+    hinh: "img/chuong dien xoay chieu.png"
+  },
+  sp54: {
+    ten: "Chuông điện",
+    moTa: "Chuông điện dùng trong các thí nghiệm về điện.",
+    hinh: "img/chuong dien.png"
+  },
+  sp55: {
+    ten: "Dây Nicrom",
+    moTa: "Dây dùng trong các thí nghiệm về điện trở và nhiệt.",
+    hinh: "img/day nicrom.png"
+  },
+  sp56: {
+    ten: "Đĩa phát âm",
+    moTa: "Đĩa phát âm dùng trong thí nghiệm âm học.",
+    hinh: "img/dia phat am.png"
+  },
+  sp57: {
+    ten: "Bộ DC chuyển động năng thành thế năng và...",
+    moTa: "Bộ thí nghiệm chuyển động năng thành thế năng và ngược lại.",
+    hinh: "img/bo dc chuyen dong nang thanh the nang va nguoc lai.png"
+  },
+  sp58: {
+    ten: "Bộ DC phát hiện dòng điện và MH khung dâ...",
+    moTa: "Bộ DC dùng để phát hiện dòng điện và quan sát khung dây dẫn trong từ trường.",
+    hinh: "img/Bo dc phat hien dong dien và MH khung day dan trong tu truong.png"
+  },
+  sp59: {
+    ten: "Bộ DC TN áp suất chất lỏng",
+    moTa: "Bộ thí nghiệm đo áp suất chất lỏng trong các hệ thống.",
+    hinh: "img/Bo dc TN ap suat chat long.png"
+  },
+  sp60: {
+    ten: "Bộ trộn màu ánh sáng",
+    moTa: "Bộ dùng để trộn các màu ánh sáng trong thí nghiệm quang học.",
+    hinh: "img/bo den tron mau anh sang.png"
+  },
+  sp61: {
+    ten: "Bộ kính lúp",
+    moTa: "Bộ kính lúp dùng trong các thí nghiệm quang học để phóng đại vật thể.",
+    hinh: "img/bo kinh lup.png"
+  },
+  sp62: {
+    ten: "Bộ TN về áp lực",
+    moTa: "Bộ thí nghiệm nghiên cứu về áp suất trong các chất lỏng.",
+    hinh: "img/bo tn ve ap luc.png"
+  },
+  sp63: {
+    ten: "Bút thử điện thông mạch",
+    moTa: "Bút thử điện giúp kiểm tra mạch điện có thông hay không.",
+    hinh: "img/but thu dien thong mach.png"
+  },
+  sp64: {
+    ten: "Khe sáng chữ F",
+    moTa: "Khe sáng dùng trong thí nghiệm phân tích ánh sáng.",
+    hinh: "img/khe sang chu F.png"
+  },
+  sp65: {
+    ten: "Khối gỗ",
+    moTa: "Khối gỗ dùng trong các thí nghiệm cơ học.",
+    hinh: "img/Khoi go.png"
+  },
+  sp66: {
+    ten: "Khối nhựa",
+    moTa: "Khối nhựa dùng trong các thí nghiệm vật lý.",
+    hinh: "img/khoi nhua.png"
+  },
+  sp67: {
+    ten: "Khớp nối chữ thập",
+    moTa: "Khớp nối chữ thập dùng trong các mô hình thí nghiệm.",
+    hinh: "img/khop noi chu thap.png"
+  },
+  sp68: {
+    ten: "La bàn loại to",
+    moTa: "La bàn lớn dùng trong các thí nghiệm về từ trường và hướng dẫn.",
+    hinh: "img/la ban loai to.png"
+  },
+  sp69: {
+    ten: "Lò xo uốn lá tròn thanh nhôm",
+    moTa: "Lò xo uốn lá tròn làm từ thanh nhôm dùng trong các thí nghiệm về đàn hồi.",
+    hinh: "img/lo xo uon la tron thanh nhom.png"
+  },
+  sp70: {
+    ten: "Lò xo xoắn",
+    moTa: "Lò xo xoắn dùng trong các thí nghiệm đàn hồi và lực.",
+    hinh: "img/Lo xo xoan.png"
+  },
+  sp71: {
+    ten: "Màn ảnh",
+    moTa: "Màn ảnh dùng để hiển thị kết quả trong các thí nghiệm.",
+    hinh: "img/man anh.png"
+  },
+  sp72: {
+    ten: "Máng nghiêng 2 đoạn",
+    moTa: "Máng nghiêng dùng trong thí nghiệm về chuyển động.",
+    hinh: "img/mang nghieng 2 doan.png"
+  },
+  sp73: {
+    ten: "Mảnh nhôm mỏng",
+    moTa: "Mảnh nhôm dùng trong thí nghiệm về tính chất vật liệu.",
+    hinh: "img/manh nhom mong.png"
+  },
+  sp74: {
+    ten: "Ống dây",
+    moTa: "Ống dây dùng trong thí nghiệm về dòng điện và từ trường.",
+    hinh: "img/ong day.png"
+  },
+  sp75: {
+    ten: "Thanh đồng và đế",
+    moTa: "Thanh đồng và đế dùng trong các thí nghiệm về điện.",
+    hinh: "img/thanh dong va de.png"
+  },
+   sp76: { ten: "Gương cầu lồi", moTa: "Gương cầu lồi", hinh: "img/guong cau loi.png" },
+    sp77: { ten: "Gương cầu lõm", moTa: "Gương cầu lõm", hinh: "img/guong cau lom.png" },
+    sp78: { ten: "Gương phẳng", moTa: "Gương phẳng", hinh: "img/guong phang.png" },
+    sp79: { ten: "Giá đỡ gương phẳng với mặt bàn", moTa: "Giá đỡ gương phẳng với mặt bàn", hinh: "img/gia do guong phang voi mat ban.png" },
+    sp80: { ten: "Giá lắp pin", moTa: "Giá lắp pin", hinh: "img/gia lap pin.png" },
+    sp81: { ten: "Giá nhựa", moTa: "Giá nhựa", hinh: "img/gia nhua.png" },
+    sp82: { ten: "Giá quang học", moTa: "Giá quang học", hinh: "img/gia quang hoc.png" },
+    sp83: { ten: "Bóng đèn kèm đui", moTa: "Bóng đèn kèm đui", hinh: "img/bong den kem dui.png" },
+    sp84: { ten: "Bóng điện", moTa: "Bóng điện", hinh: "img/bong dien.png" },
+    sp85: { ten: "Bộ TN tác dụng từ của dòng điện xoay chiều và một chiều", moTa: "Bộ TN tác dụng từ của dòng điện xoay chiều và một chiều", hinh: "img/bo tn tac dung tu cua dong dien xoay chieu va 1 chieu.png" },
+    sp86: { ten: "Cầu dao", moTa: "Cầu dao", hinh: "img/cau dao.png" },
+    sp87: { ten: "Chân đế", moTa: "Chân đế", hinh: "img/chan de.png" },
+    sp88: { ten: "Quả cầu nhựa có dây treo", moTa: "Quả cầu nhựa có dây treo", hinh: "img/qua cau nhua co day treo.png" },
+    sp89: { ten: "Quạt điện nhỏ", moTa: "Quạt điện nhỏ", hinh: "img/quat dien nho.png" },
+    sp90: { ten: "Ròng rọc cố định", moTa: "Ròng rọc cố định", hinh: "img/rong doc co dinh.png" },
+    sp91: { ten: "Ròng rọc động", moTa: "Ròng rọc động", hinh: "img/rong roc dong.png" },
+    sp92: { ten: "Tấm kính phẳng có giá", moTa: "Tấm kính phẳng có giá", hinh: "img/tam kinh phang co gia.png" },
+    sp93: { ten: "Tấm nhựa chia độ", moTa: "Tấm nhựa chia độ", hinh: "img/tam nhua chia do.png" },
+    sp94: { ten: "Thanh nam châm thẳng", moTa: "Thanh nam châm thẳng", hinh: "img/thanh nam cham thang.png" },
+    sp95: { ten: "Thanh sắt non", moTa: "Thanh sắt non", hinh: "img/thanh sat non.png" },
+    sp96: { ten: "Điện trở có vòng màu", moTa: "Điện trở có vòng màu", hinh: "img/dien tro co vong mau.png" },
+    sp97: { ten: "Điện trở ghi số", moTa: "Điện trở ghi số", hinh: "img/dien tro ghi so.png" },
+    sp98: { ten: "Điện trở mẫu", moTa: "Điện trở mẫu", hinh: "img/dien tro mau.png" },
+    sp99: { ten: "Đòn bẩy và trục", moTa: "Đòn bẩy và trục", hinh: "img/Don bay va truc.png" },
+    sp100: { ten: "Bình trụ", moTa: "Bình trụ", hinh: "img/binh tru.png" },
+    sp101: { ten: "Bộ chế tạo nam châm vĩnh cửu", moTa: "Bộ chế tạo nam châm vĩnh cửu", hinh: "img/bo che tao nam cham vinh cuu.png" },
+    sp102: { ten: "Bộ dây dẫn constan loại nhỏ", moTa: "Bộ dây dẫn constan loại nhỏ", hinh: "img/bo day dan constan loai nho.png" },
+    sp103: { ten: "Bình trụ", moTa: "Bình trụ", hinh: "img/binh tru.png" },
+    sp104: { ten: "Mặt phẳng nghiêng", moTa: "Mặt phẳng nghiêng", hinh: "img/mat phang nghieng.png" },
+    sp105: { ten: "Máy a tút", moTa: "Máy a tút", hinh: "img/May atut.png" },
+    sp106: { ten: "Bộ lò xo uốn lá tròn và đế", moTa: "Bộ lò xo uốn lá tròn và đế", hinh: "img/bo lo xo uon la tron va de.png" },
+	sp107: { ten: "Máy phát điện gió loại nhỏ thắp sáng đèn", moTa: "Máy phát điện gió loại nhỏ thắp sáng đèn", hinh: "img/may phat dien gio loai nho thap sang den led.png" },
+    sp108: { ten: "Ampe kế 1 chiều", moTa: "Ampe kế 1 chiều", hinh: "img/Ampe ke 1 chieu.png" },
+    sp109: { ten: "Băng kép", moTa: "Băng kép", hinh: "img/bang kep.png" },
+    sp110: { ten: "Bảng lắp ráp mạch điện", moTa: "Bảng lắp ráp mạch điện", hinh: "img/bang lap rap mach dien.png" },
+    sp111: { ten: "Bánh xe Macxoen", moTa: "Bánh xe Macxoen", hinh: "img/Banh xe maxoen.png" },
+    sp112: { ten: "Bi sắt", moTa: "Bi sắt", hinh: "img/Bi sat.png" },
+    sp113: { ten: "Hộp kín bên trong có đèn và pin", moTa: "Hộp kín bên trong có đèn và pin", hinh: "img/hop kin ben trong co den va pin.png" },
+    sp114: { ten: "Hộp nghiên cứu sự tán xạ ánh sáng màu của các vật", moTa: "Hộp nghiên cứu sự tán xạ ánh sáng màu của các vật", hinh: "img/hop nghien cuu su tan xa anh sang mau cua cac vat.png" },
+    sp115: { ten: "Kim nam châm", moTa: "Kim nam châm", hinh: "img/kim nam cham.png" },
+    sp116: { ten: "Kẹp đa năng", moTa: "Kẹp đa năng", hinh: "img/kep da nang.png" },
+    sp117: { ten: "Dây constan loại lớn", moTa: "Dây constan loại lớn", hinh: "img/day constang loai lon.png" },
+    sp118: { ten: "Điot quang (Đèn led)", moTa: "Điot quang (Đèn led)", hinh: "img/diot quang(Led).png" }	
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 118);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

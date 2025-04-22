@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn Công Nghệ</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -72,5 +85,142 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+  sp01: {
+    ten: "Bộ linh kiện",
+    moTa: "Bộ linh kiện này bao gồm các linh kiện cần thiết để thực hiện các thí nghiệm điện tử cơ bản.",
+    hinh: "img/Bo linh kien.png"
+  },
+  sp02: {
+    ten: "Đồng hồ đo điện đa năng",
+    moTa: "Đồng hồ đo điện đa năng dùng để đo điện áp, cường độ dòng điện và các thông số điện khác trong các thí nghiệm.",
+    hinh: "img/Dong ho do dien da nang (1).png"
+  },
+  sp03: {
+    ten: "Bảng mạch bảo vệ quá điện áp",
+    moTa: "Bảng mạch bảo vệ quá điện áp giúp bảo vệ thiết bị khỏi sự cố quá tải điện áp.",
+    hinh: "img/Bang mach bao ve qua dien ap.png"
+  },
+  sp04: {
+    ten: "Mạch ĐK tốc độ động cơ ko đồng bộ 1 pha",
+    moTa: "Mạch điều khiển tốc độ động cơ không đồng bộ 1 pha dùng trong các ứng dụng cơ điện.",
+    hinh: "img/mach DK dongcoko dong bo 1 pha.png"
+  },
+  sp05: {
+    ten: "Bảng mạch khuếch đại âm tần",
+    moTa: "Bảng mạch này giúp khuếch đại tín hiệu âm tần, ứng dụng trong nhiều thiết bị điện tử.",
+    hinh: "img/Bang mach khuech dai am tan.png"
+  },
+  sp06: {
+    ten: "Bảng mạch nối tải 3 pha",
+    moTa: "Bảng mạch nối tải 3 pha dùng trong các hệ thống điện công nghiệp.",
+    hinh: "img/Bang mach noi tai 3 pha.png"
+  },
+  sp07: {
+    ten: "Bảng mạch nguồn cung cấp điện 1 chiều",
+    moTa: "Bảng mạch này cung cấp nguồn điện một chiều ổn định cho các mạch điện tử.",
+    hinh: "img/Bang mach nguon cung cap dien 1 chieu.png"
+  },
+  sp08: {
+    ten: "Bảng mạch tạo xung đa hài",
+    moTa: "Bảng mạch này tạo ra tín hiệu xung đa hài, dùng trong các mạch điều khiển và đồng hồ số.",
+    hinh: "img/Bang mach tao xung da hai.png"
+  },
+  sp09: {
+    ten: "Bộ dụng cụ vẽ kỹ thuật",
+    moTa: "Bộ dụng cụ này bao gồm các công cụ cần thiết để vẽ kỹ thuật chính xác và chi tiết.",
+    hinh: "img/bo dung cu ve ky thuat.png"
+  },
+  sp10: {
+    ten: "Bảng mạch bảo vệ quá điện áp",
+    moTa: "Bảng mạch bảo vệ quá điện áp giúp bảo vệ thiết bị khỏi sự cố quá tải điện áp.",
+    hinh: "img/Bang mach bao ve qua dien ap.png"
+  },
+  sp11: {
+    ten: "Bảng mạch nối tải 3 pha",
+    moTa: "Bảng mạch nối tải 3 pha dùng trong các hệ thống điện công nghiệp.",
+    hinh: "img/Bang mach noi tai 3 pha.png"
+  },
+  sp12: {
+    ten: "Bộ dụng cụ vẽ kỹ thuật",
+    moTa: "Bộ dụng cụ này bao gồm các công cụ cần thiết để vẽ kỹ thuật chính xác và chi tiết.",
+    hinh: "img/bo dc ve ky thuat.png"
+  },
+  sp13: {
+    ten: "Bộ linh kiện",
+    moTa: "Bộ linh kiện này bao gồm các linh kiện cần thiết để thực hiện các thí nghiệm điện tử cơ bản.",
+    hinh: "img/Bo linh kien.png"
+  },
+  sp14: {
+    ten: "Đồng hồ đo điện đa năng",
+    moTa: "Đồng hồ đo điện đa năng dùng để đo điện áp, cường độ dòng điện và các thông số điện khác trong các thí nghiệm.",
+    hinh: "img/Dong ho do dien da nang (1).png"
+  },
+  sp15: {
+    ten: "Máy đo độ PH (Singapore)",
+    moTa: "Máy đo độ PH giúp đo mức độ axit-bazơ trong dung dịch, ứng dụng trong hóa học và sinh học.",
+    hinh: "img/May do do PH(singapore).png"
+  }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phòng bộ môn Hoá - Sinh</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -88,5 +101,162 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+  sp01: {
+    ten: "Bàn HS thực hành Hóa - Sinh LL23-BTHHS0...",
+    moTa: "Bàn học sinh dùng trong các phòng thực hành Hóa - Sinh, thiết kế chắc chắn, phù hợp cho thí nghiệm.",
+    hinh: "img/THHS22.png"
+  },
+  sp02: {
+    ten: "Bàn HS thực hành Hóa - Sinh LL23-BTHHS0...",
+    moTa: "Phiên bản khác của bàn thực hành Hóa - Sinh cho học sinh, mặt bàn chống hóa chất.",
+    hinh: "img/Bàn hóa - sinh.png"
+  },
+  sp03: {
+    ten: "Bàn thí nghiệm HS (LL23-BTNN02)",
+    moTa: "Bàn thí nghiệm dành cho học sinh, thiết kế chuyên dụng cho các hoạt động thực nghiệm.",
+    hinh: "img/BTHHSN.png"
+  },
+  sp04: {
+    ten: "Bàn GV biểu diễn Hóa -sinh",
+    moTa: "Bàn giáo viên biểu diễn, sử dụng trong các tiết học thực hành Hóa - Sinh.",
+    hinh: "img/BDHS15.png"
+  },
+  sp05: {
+    ten: "Bàn giáo viên phòng Hóa - Sinh",
+    moTa: "Bàn giáo viên chuyên dùng cho các phòng thực hành Hóa - Sinh, tích hợp chậu rửa, ổ cắm, gas,...",
+    hinh: "img/BGVH14.png"
+  },
+  sp06: {
+    ten: "Bàn GV Phòng Hóa Sinh(LL23-BGVCN)",
+    moTa: "Bàn GV thiết kế hiện đại cho phòng thí nghiệm Hóa Sinh, mặt bàn chịu hóa chất.",
+    hinh: "img/Ban GV hoa sinh(LL23-BGVCN).png"
+  },
+  sp07: {
+    ten: "Bàn chuẩn bi phòng hóa sinh",
+    moTa: "Bàn chuẩn bị dụng cụ và hóa chất trước giờ học, phục vụ công tác giảng dạy thực hành.",
+    hinh: "img/CBHS1224.png"
+  },
+  sp08: {
+    ten: "Ghế phòng thí nghiệm 3 chân GTN02",
+    moTa: "Ghế ba chân inox, chắc chắn, phù hợp sử dụng trong phòng thí nghiệm hóa học, sinh học.",
+    hinh: "img/GTNINOX02 (1).png"
+  },
+  sp09: {
+    ten: "Ghế phòng thí nghiệm GTNMS",
+    moTa: "Ghế thí nghiệm có thể điều chỉnh độ cao, khung sắt sơn tĩnh điện, mặt đệm da công nghiệp.",
+    hinh: "img/GTNMS30.png"
+  },
+  sp10: {
+    ten: "Ghế phòng thí nghiệm GTN03",
+    moTa: "Ghế phòng thí nghiệm xoay 360 độ, chân sắt 5 nhánh có bánh xe tiện di chuyển.",
+    hinh: "img/GTNX03.png"
+  },
+  sp11: {
+    ten: "Ghế phòng thí nghiệm GTNMN",
+    moTa: "Ghế xoay phòng thí nghiệm GTNMN, thiết kế tiện lợi và thoải mái cho người sử dụng.",
+    hinh: "img/GTNN30.png"
+  },
+  sp12: {
+    ten: "Tủ đựng hóa chất(LL23-THC02)",
+    moTa: "Tủ đựng hóa chất chịu axit và kiềm, cửa kính hoặc mica, nhiều ngăn tiện dụng.",
+    hinh: "img/tu hoa chat 02.png"
+  },
+  sp13: {
+    ten: "Tủ đựng hóa chất(LL23-THC03)",
+    moTa: "Tủ đựng hóa chất loại lớn, có khóa an toàn, sơn tĩnh điện chống ăn mòn.",
+    hinh: "img/tu hoa chat 03.png"
+  },
+  sp14: {
+    ten: "Tủ đựng hóa chất - Khay nhựa(LL23-THCKN)",
+    moTa: "Tủ đựng hóa chất có khay nhựa tháo rời, chống tràn hóa chất, dễ vệ sinh.",
+    hinh: "img/tu hoa chat khay nhua.png"
+  },
+  sp15: {
+    ten: "Tủ đựng hóa chất(LL23-THC01)",
+    moTa: "Tủ đựng hóa chất dùng trong phòng thí nghiệm, cửa kính 2 cánh, có khóa.",
+    hinh: "img/tu hoa chat 01.png"
+  },
+  sp16: {
+    ten: "Tủ Y tế",
+    moTa: "Tủ y tế chuyên dùng để đựng thuốc, vật tư y tế trong phòng thực hành hoặc văn phòng.",
+    hinh: "img/Tu yte.png"
+  },
+  sp17: {
+    ten: "Quạt hút thải khí độc",
+    moTa: "Thiết bị hỗ trợ thông gió, loại bỏ khí độc trong phòng thí nghiệm một cách hiệu quả.",
+    hinh: "img/QHM (1).png"
+  },
+  sp18: {
+    ten: "Xe đẩy LL23-XD2T",
+    moTa: "Xe đẩy dụng cụ thí nghiệm, thiết kế 2 tầng, bánh xe có khóa tiện lợi.",
+    hinh: "img/Xe day.png"
+  },
+  sp19: {
+    ten: "Tủ hút thải khí độc",
+    moTa: "Tủ hút khí độc dùng trong phòng thí nghiệm hóa học để bảo vệ người sử dụng khỏi hơi độc.",
+    hinh: "img/Tu hut.png"
+  }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

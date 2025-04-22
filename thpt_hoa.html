@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Môn hoá</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -128,5 +141,212 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+  sp01: {
+    ten: "Bộ hóa chất thực hành lớp 10",
+    moTa: "Bộ hóa chất phục vụ cho các thí nghiệm môn Hóa lớp 10, đảm bảo an toàn và đủ lượng cho học sinh.",
+    hinh: "img/Bo hoa chat 10.png"
+  },
+  sp02: {
+    ten: "Bộ hóa chất thực hành lớp 11",
+    moTa: "Bao gồm các hóa chất cần thiết cho thí nghiệm lớp 11 như axit, bazơ, muối,... được phân chia khoa học.",
+    hinh: "img/bo hoa chat 11.png"
+  },
+  sp03: {
+    ten: "Bộ hóa chất thực hành lớp 12",
+    moTa: "Phục vụ các bài thực hành hóa học nâng cao cho chương trình lớp 12.",
+    hinh: "img/Bo hoa chat 12.png"
+  },
+  sp04: {
+    ten: "Dụng cụ điều chế chất khí từ chất lỏng và rắn",
+    moTa: "Bộ dụng cụ giúp học sinh thực hành điều chế khí từ nhiều nguồn vật chất khác nhau.",
+    hinh: "img/Dung cu dieu che chat khi tu chat ran long.png"
+  },
+  sp05: {
+    ten: "Khay đựng dụng cụ và hóa chất",
+    moTa: "Dụng cụ bằng nhựa hoặc inox, giúp bảo quản hóa chất và dụng cụ an toàn, gọn gàng.",
+    hinh: "img/Khay mang dc hoa chat.png"
+  },
+  sp06: {
+    ten: "Lọ thủy tinh miệng hẹp có ống hút",
+    moTa: "Dùng để chứa chất lỏng và có thể rót chính xác nhờ ống hút kèm theo.",
+    hinh: "img/Lo thuy tinh mieng hep co ong hut.png"
+  },
+  sp07: {
+    ten: "Cốc thủy tinh",
+    moTa: "Cốc có độ chịu nhiệt cao, dùng để đong và pha chế dung dịch.",
+    hinh: "img/Coc thuy tinh.png"
+  },
+  sp08: {
+    ten: "Ống dẫn thủy tinh",
+    moTa: "Dùng trong các thí nghiệm điều chế và dẫn khí.",
+    hinh: "img/ong dan thuy tinh.png"
+  },
+  sp09: {
+    ten: "Ống đong hình trụ",
+    moTa: "Dụng cụ đo thể tích chất lỏng, được chia vạch rõ ràng.",
+    hinh: "img/ong dong hinh tru.png"
+  },
+  sp10: {
+    ten: "Ống hút nhỏ giọt",
+    moTa: "Dùng để nhỏ dung dịch từng giọt chính xác trong các thí nghiệm.",
+    hinh: "img/ong hut nho giot.png"
+  },
+  sp11: {
+    ten: "Ống nghiệm có nhánh phi 24",
+    moTa: "Ống nghiệm chịu nhiệt, có nhánh tiện lợi cho các thí nghiệm phân tách hoặc dẫn khí.",
+    hinh: "img/ong nghiem co nhanh phi 24.png"
+  },
+  sp12: {
+    ten: "Ống nghiệm có nhánh",
+    moTa: "Tương tự ống nghiệm thông thường, có thêm nhánh để phục vụ các mục đích dẫn khí hoặc phản ứng phức tạp.",
+    hinh: "img/ong nghiem co nhanhh.png"
+  },
+  sp13: {
+    ten: "Pin điện hóa",
+    moTa: "Dụng cụ mô phỏng quá trình tạo điện từ phản ứng hóa học.",
+    hinh: "img/pin dien hoa.png"
+  },
+  sp14: {
+    ten: "Bình cầu có nhánh",
+    moTa: "Bình cầu thủy tinh có nhánh, dùng trong phản ứng hóa học và chưng cất.",
+    hinh: "img/binh cau co nhanh.png"
+  },
+  sp15: {
+    ten: "Bình kíp tiêu chuẩn",
+    moTa: "Bình chứa chất khí tiêu chuẩn phục vụ cho các thí nghiệm khí học.",
+    hinh: "img/binh kip tieu chuan.png"
+  },
+  sp16: {
+    ten: "Bình rửa khí",
+    moTa: "Dụng cụ lọc khí, loại bỏ tạp chất trước khi sử dụng trong thí nghiệm.",
+    hinh: "img/Binh rua khi.png"
+  },
+  sp17: {
+    ten: "Bình tam giác",
+    moTa: "Dụng cụ pha chế dung dịch hoặc thực hiện phản ứng hóa học trong phòng thí nghiệm.",
+    hinh: "img/Binh tam giac.png"
+  },
+  sp18: {
+    ten: "Bộ dụng cụ điện phân dung dịch CuSO4",
+    moTa: "Dùng để quan sát quá trình điện phân dung dịch muối đồng, minh họa phản ứng oxi hóa - khử.",
+    hinh: "img/Bo dung cu dien phan dd CuSO4.png"
+  },
+	sp19: {
+    ten: "Bộ dụng cụ điện phân dung dịch NaCl",
+    moTa: "Dùng để thực hiện thí nghiệm điện phân dung dịch muối NaCl, quan sát quá trình điện phân và thu được khí clo, khí hidro.",
+    hinh: "img/bo dung cu dien phan dd NaCl.png"
+  },
+  sp20: {
+    ten: "Bộ giá thí nghiệm",
+    moTa: "Bộ dụng cụ giúp lắp đặt các thí nghiệm hóa học, vật lý, với khả năng điều chỉnh độ cao và độ nghiêng.",
+    hinh: "img/Bo gia thi nghiem.png"
+  },
+  sp21: {
+    ten: "Bộ nút cao su 6 loại",
+    moTa: "Bộ gồm 6 loại nút cao su dùng trong các thí nghiệm đậy lọ, ống nghiệm, ống thí nghiệm và bình cầu.",
+    hinh: "img/Bo nut cao su 6 loai.png"
+  },
+  sp22: {
+    ten: "Bộ TN phân tích thể tích",
+    moTa: "Bộ dụng cụ thí nghiệm dùng để phân tích thể tích dung dịch qua các phương pháp chuẩn độ.",
+    hinh: "img/Bo TN phan tich the tich.png"
+  },
+  sp23: {
+    ten: "Dụng cụ thử tính dẫn điện",
+    moTa: "Dùng để kiểm tra khả năng dẫn điện của các vật liệu, dung dịch trong các thí nghiệm vật lý và hóa học.",
+    hinh: "img/DC thu tinh dan dien.png"
+  },
+  sp24: {
+    ten: "Bình cầu cổ dài đáy bằng",
+    moTa: "Dụng cụ thủy tinh có cổ dài, đáy bằng, dùng trong các thí nghiệm đun nóng hoặc chưng cất.",
+    hinh: "img/binh cau day bang.png"
+  },
+  sp25: {
+    ten: "Lọ thủy tinh miệng hẹp",
+    moTa: "Dùng để chứa và bảo quản hóa chất lỏng trong các thí nghiệm.",
+    hinh: "img/Lo thuy tinh mieng hep.png"
+  },
+  sp26: {
+    ten: "Lọ thủy tinh miệng rộng",
+    moTa: "Dùng để chứa các hóa chất, dung dịch trong các thí nghiệm đòi hỏi lượng lớn chất lỏng.",
+    hinh: "img/Lo thuy tinh mieng rong.png"
+  },
+  sp27: {
+    ten: "Mô hình phân tử dạng đặc",
+    moTa: "Mô hình phân tử được làm bằng chất liệu bền, có thể quan sát cấu trúc của phân tử trong các thí nghiệm hóa học.",
+    hinh: "img/MH phan tu dang dac.png"
+  },
+  sp28: {
+    ten: "Mô hình phân tử dạng rỗng",
+    moTa: "Mô hình phân tử được thiết kế với cấu trúc rỗng để giúp học sinh dễ dàng hình dung sự phân chia trong phân tử.",
+    hinh: "img/MH phan tu dang rong.png"
+  },
+  sp29: {
+    ten: "Nút cao su có lỗ",
+    moTa: "Dùng để đậy các ống nghiệm hoặc bình cầu, có lỗ giúp dẫn khí trong các thí nghiệm.",
+    hinh: "img/Nut cao su co lo.png"
+  }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>

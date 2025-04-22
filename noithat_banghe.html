@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bàn ghế GV - HS</title>
     <link rel="stylesheet" href="trangchu.css">
+    <style>
+        a.btn-back {
+      display: inline-block;
+      width: auto;
+      padding: 6px 20px;
+      border-radius: 10px;
+      background-color: burlywood;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    </style>
 </head>
 <body>
     <section class="san-pham">
@@ -44,5 +57,107 @@
             </div>
         </div>
     </section>
+
+    <section id="chi-tiet-san-pham" style="display: none; padding: 20px;">
+        <a href="#" id="back-to-list" class="btn-back">← Trở lại danh sách</a>
+        <br><br><br>
+        <h2 id="sp-ten"></h2><br>
+        <img id="sp-hinh" src="" alt="" style="max-width: 100%; border-radius: 10px;"><br>
+        <p id="sp-mo-ta"></p><br><br><br>
+        <h3>Sản phẩm liên quan</h3>
+        <div id="san-pham-lien-quan" class="danh-sach-san-pham" style="margin-top: 10px;"></div>
+      </section>
+
+      <script>
+        const sanPhamData = {
+  sp01: {
+    ten: "Bàn ghế học sinh có tựa LL23-BLGTY01",
+    moTa: "Bàn ghế học sinh có tựa, thiết kế chắc chắn và tiện dụng cho học sinh.",
+    hinh: "img/BLGTY_01.png"
+  },
+  sp02: {
+    ten: "Bàn học sinh bán trú ghế liền LL12-BBTGL...",
+    moTa: "Bàn học sinh bán trú với thiết kế ghế liền, phù hợp cho học sinh trong giờ ăn trưa hoặc nghỉ.",
+    hinh: "img/BBTGL.png"
+  },
+  sp03: {
+    ten: "Bàn học sinh liền ghế LL23-BGLKT-03",
+    moTa: "Bàn học sinh với ghế liền, phù hợp cho các lớp học cơ bản.",
+    hinh: "img/BHSKT-03.png"
+  },
+  sp04: {
+    ten: "Bàn học sinh ghế rời LL12-BGR-02",
+    moTa: "Bàn học sinh với ghế rời, tạo sự thoải mái và linh hoạt cho học sinh.",
+    hinh: "img/BHSGR-02.png"
+  },
+  sp05: {
+    ten: "Bàn học sinh ghế rời LL12_BGR",
+    moTa: "Bàn học sinh với thiết kế ghế rời, kích thước tiện dụng cho không gian lớp học.",
+    hinh: "img/BGHS(1.2 x 0.45 x 0.63 – 0.75 )_GCN.png"
+  },
+  sp06: {
+    ten: "Bàn ghế học sinh đơn LL01_BGD",
+    moTa: "Bàn ghế học sinh đơn với thiết kế tối giản, dễ dàng di chuyển.",
+    hinh: "img/BGD.png"
+  },
+  sp07: {
+    ten: "Bàn học sinh ghế liền LL12_BBTGL- 1A",
+    moTa: "Bàn học sinh với ghế liền, thiết kế dành cho học sinh bán trú.",
+    hinh: "img/Ban ban tru 3.png"
+  },
+  sp08: {
+    ten: "Bàn ghế học sinh bán trú ghế rời LL12_BB...",
+    moTa: "Bàn ghế học sinh bán trú với ghế rời, thiết kế tối ưu cho không gian nhỏ.",
+    hinh: "img/Ban ban tru 2.png"
+  }
+};
+function hienChiTietSanPham(id) {
+          const sp = sanPhamData[id];
+          if (!sp) return;
+    
+          document.getElementById('sp-ten').innerText = sp.ten;
+          document.getElementById('sp-hinh').src = sp.hinh;
+          document.getElementById('sp-hinh').alt = sp.ten;
+          document.getElementById('sp-mo-ta').innerText = sp.moTa;
+    
+          document.querySelector('.san-pham').style.display = 'none';
+          document.getElementById('chi-tiet-san-pham').style.display = 'block';
+    
+          const lienQuan = Object.entries(sanPhamData).filter(([key]) => key !== id).slice(0, 58);
+          const container = document.getElementById('san-pham-lien-quan');
+          container.innerHTML = '';
+          lienQuan.forEach(([key, sp]) => {
+            const div = document.createElement('div');
+            div.className = 'san-pham-item';
+            div.setAttribute('data-id', key);
+            div.innerHTML = `<img src="${sp.hinh}" alt="${sp.ten}"><p>${sp.ten}</p>`;
+            container.appendChild(div);
+          });
+    
+          document.querySelectorAll('#san-pham-lien-quan .san-pham-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const idMoi = this.getAttribute('data-id');
+              hienChiTietSanPham(idMoi);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          });
+        }
+    
+        document.querySelectorAll('.danh-sach-san-pham .san-pham-item').forEach((item, index) => {
+          const id = 'sp' + String(index + 1).padStart(2, '0');
+          item.setAttribute('data-id', id);
+          item.addEventListener('click', function () {
+            hienChiTietSanPham(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+    
+        document.getElementById('back-to-list').addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('chi-tiet-san-pham').style.display = 'none';
+          document.querySelector('.san-pham').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
 </body>
 </html>
