@@ -13,6 +13,8 @@ header {
     padding: 0; /* Bỏ padding để sát viền */
 }
 
+
+
 .container {
     /* display: flex;
     align-items: center;
@@ -24,7 +26,7 @@ header {
     justify-content: center; /* Căn giữa nội dung */
     align-items: center; /* Căn giữa theo chiều dọc */
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 /* Logo */
 .logo {
